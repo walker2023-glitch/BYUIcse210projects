@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Sandbox World!");
+        string intro = "Hello";
+        Console.WriteLine(intro.ToUpper());
+        //Console.WriteLine(intro.);
+        //Console.WriteLine("Hello Sandbox World!");
     }
 }

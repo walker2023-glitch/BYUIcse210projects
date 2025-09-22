@@ -52,32 +52,32 @@ class Program
         if (theAnswer2 < theGradeD)
         {
             letter = "F";
-            Console.WriteLine($"Sorry {first}, you got an F");
-            Console.WriteLine($"That means you failed this course, better luck next time.");
+            //Console.WriteLine($"Sorry {first}, you got an F");
+            //Console.WriteLine($"That means you failed this course, better luck next time.");
         }
         else if (theAnswer2 >= theGradeD && theAnswer2 < theGradeC)
         {
             letter = "D";
-            Console.WriteLine($"Sorry {first}, you got an D");
-            Console.WriteLine($"That means you failed this class, better luck next time.");
+            //Console.WriteLine($"Sorry {first}, you got an D");
+            //Console.WriteLine($"That means you failed this class, better luck next time.");
         }
         else if (theAnswer2 >= theGradeC && theAnswer2 < theGradeB)
         {
             letter = "C";
-            Console.WriteLine($"Good job {first}! You got an C");
-            Console.WriteLine($"C's get degrees");
+            //Console.WriteLine($"Good job {first}! You got an C");
+            //Console.WriteLine($"C's get degrees");
         }
         else if (theAnswer2 >= theGradeB && theAnswer2 < theGradeA)
         {
             letter = "B";
-            Console.WriteLine($"Amazing {first}, you got an B");
-            Console.WriteLine($"B's are even better than C's");
+            //Console.WriteLine($"Amazing {first}, you got an B");
+            //Console.WriteLine($"B's are even better than C's");
         }
         else if (theAnswer2 >= theGradeA)
         {
             letter = "A";
-            Console.WriteLine($"Wow {first}, you got an A");
-            Console.WriteLine($"A's are simply awesome.");
+            //Console.WriteLine($"Wow {first}, you got an A");
+            //Console.WriteLine($"A's are simply awesome.");
         }
 
         Console.WriteLine($"Hello {first}, you got an {letter}");
