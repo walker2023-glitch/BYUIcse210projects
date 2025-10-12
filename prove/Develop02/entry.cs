@@ -17,7 +17,7 @@ class Entry
 "If you could magically solve one problem facing the world, which one would it be and why?",
 "What steps did I take today toward achieving a long-term goal, and how did they feel?",
 "Detail a difficult decision I had to make today and what led me to my choice.",
-"What is a new thought or idea that I spent a significant amount of time considering today?",];
+"What is a new thought or idea that I spent a significant amount of time considering today?"];
     
   
 
@@ -31,7 +31,7 @@ class Entry
 "What movie, book, or piece of music did I enjoy today?",
 "What skill or habit did I practice for at least 10 minutes today?",
 "What is one thing I need to remember for tomorrow?",
-"Where did I spend the most unnecessary time today? (Be specific.)",];
+"Where did I spend the most unnecessary time today? (Be specific.)"];
     public string _reponse = "";
 
     public string _fullAnswer = "";
