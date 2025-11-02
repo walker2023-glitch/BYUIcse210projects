@@ -3,10 +3,6 @@ using System.Data.SqlTypes;
 class Journal
 {
 
-
-
-
-
     public void SendToFile(string JE)
     {
         Console.WriteLine("What do you want to name the file?");
