@@ -36,8 +36,8 @@ jgs \\`_..---.Y.---.._`//
  ===( INK )==========\\|//====================
 __ejm\___/________dwb`---`_____________________";
 
-const string _aad =
-@"    __________________   __________________
+    const string _aad =
+    @"    __________________   __________________
 .-/|                  \ /                  |\-.
 ||||                   |                   ||||
 ||||                   |       ~~*~~       ||||
@@ -64,9 +64,9 @@ const string _aad =
  \ |  s| /
   \|===|/
    '---'";
-   
-   const string _aaq2 =
-@"   
+
+    const string _aaq2 =
+ @"   
   /////|
  ///// |
 |~~~|  |
@@ -84,14 +84,13 @@ const string _aad =
 
     int _userInput = -5;
 
-    Entry OGEntry = new Entry();
-    Journal OGJournal = new Journal();
-
-    List<string> storage = new List<string>();
-    //List<string> storage = [];
 
 
- public void StartDisplay()
+    List<Entry> _storage = new List<Entry>();
+
+
+
+    public void StartDisplay()
     {
         Console.WriteLine($"{_asciiArt}");
         Console.WriteLine($"{_startMenu}");
@@ -102,7 +101,7 @@ const string _aad =
     }
     public int GetInput()
     {
-        if (int.TryParse(Console.ReadLine(),  out _userInput))
+        if (int.TryParse(Console.ReadLine(), out _userInput))
         {
             Console.Clear();
             return _userInput;
@@ -112,117 +111,117 @@ const string _aad =
             Console.Clear();
             Console.WriteLine(_errorMessage);
             return _userInput = -5;
-            
+
             //Console.WriteLine($"{_errorMessage}");
         }
 
     }
 
+    public int ReturnInputNum()
+    {
+        return _userInput;
+    }
+
     public void CallJournal(int _userInput)
     {
+        Journal ogJournal = new Journal();
         if (_userInput == 1)
         {
-             Console.WriteLine($"{_aaw}");
+            Console.WriteLine($"{_aaw}");
             Console.WriteLine($"\nWrite");
             Console.WriteLine($"Do you want a prompt?\n1:Yes\n2:No");
             _userInput = this.GetInput();
+            if (_userInput == 1)
+            {
+                Console.WriteLine($"Do you want a longer prompt or a shorter one?\n1:Longer\n2:Shorter");
+                _userInput = this.GetInput();
                 if (_userInput == 1)
                 {
-                    Console.WriteLine($"Do you want a longer prompt or a shorter one?\n1:Longer\n2:Shorter");
-                    _userInput = this.GetInput();
-                    if (_userInput == 1)
-                    {
-                        Entry OG2Entry = new Entry();
-                        OG2Entry.DisplayLP();
-                        OG2Entry.WriteEntry();
-                        string answer = OG2Entry._fullAnswer + OG2Entry._reponse;
-                        storage = storage.Append($"{answer}").ToList();
-                    }
-                    else if (_userInput == 2)
-                    {
-                        Entry OG3Entry = new Entry();
-                        OG3Entry.DisplaySP();
-                        OG3Entry.WriteEntry();
-                        string answer = OG3Entry._fullAnswer + OG3Entry._reponse;
-                        storage = storage.Append($"{answer}").ToList();
-                    }
-                    else
-                    {
-                        Console.WriteLine(_errorMessage);
-                    }
-
-                    
+                    Entry og2Entry = new Entry();
+                    og2Entry.DisplayLP();
+                    og2Entry.WriteEntry();
+                    //string answer = og2Entry._fullAnswer + og2Entry._reponse;
+                    _storage.Add(og2Entry);
                 }
                 else if (_userInput == 2)
                 {
-                    Entry OG4Entry = new Entry();
-                    OG4Entry.Display();
-                    OG4Entry.WriteEntry();
-                    string answer = OG4Entry._fullAnswer + OG4Entry._reponse;
-                    storage = storage.Append($"{answer}").ToList();
+                    Entry og3Entry = new Entry();
+                    og3Entry.DisplaySP();
+                    og3Entry.WriteEntry();
+                    //string answer = og3Entry._fullAnswer + og3Entry._reponse;
+                    _storage.Add(og3Entry);
                 }
                 else
                 {
                     Console.WriteLine(_errorMessage);
                 }
-            
-            // OGEntry.Display();
-            // OGEntry.WriteEntry();
-            // string answer = OGEntry._fullAnswer + OGEntry._reponse;
+
+
+            }
+            else if (_userInput == 2)
+            {
+                Entry og4Entry = new Entry();
+                og4Entry.Display();
+                og4Entry.WriteEntry();
+                //string answer = og4Entry._fullAnswer + og4Entry._reponse;
+                _storage.Add(og4Entry);
+            }
+            else
+            {
+                Console.WriteLine(_errorMessage);
+            }
+
+            // ogEntry.Display();
+            // ogEntry.WriteEntry();
+            // string answer = ogEntry._fullAnswer + ogEntry._reponse;
             // storage = storage.Append($"{answer}").ToList();
             //Console.WriteLine($"{_startMenu}");
-            // Entry OG2Entry = new Entry();
-            // OG2Entry.DisplaySP();
-            // OG2Entry.WriteEntry();
-            // string answer = OG2Entry._fullAnswer + OG2Entry._reponse;
+            // Entry og2Entry = new Entry();
+            // og2Entry.DisplaySP();
+            // og2Entry.WriteEntry();
+            // string answer = og2Entry._fullAnswer + og2Entry._reponse;
             // storage = storage.Append($"{answer}").ToList();
         }
         else if (_userInput == 2)
         {
             Console.WriteLine($"{_aad}");
             Console.WriteLine($"Display");
-            foreach (string e in storage)
+            foreach (Entry e in _storage)
             {
                 //Console.WriteLine($"{storage}");
-                //OGJournal.SendToFile(e);
-                Console.WriteLine(e);
+                //ogJournal.SendToFile(e);
+                Console.WriteLine(e.FullEntry());
                 //Console.WriteLine($"{_startMenu}");
             }
         }
         else if (_userInput == 3)
         {
             Console.WriteLine($"Load");
-            OGJournal.ReadFromFile();
-            //Console.WriteLine($"{storage[0]}");
-            //Console.WriteLine($"{_startMenu}");
-                
+            _storage = ogJournal.ReadFromFile();
+
         }
         else if (_userInput == 4)
         {
             Console.WriteLine($"Save");
-            foreach (string e in storage)
-            {
-                //Console.WriteLine($"{storage}");
-                OGJournal.SendToFile(e);
-            }
+            ogJournal.SendToFile(_storage);
+
+
             //Console.WriteLine($"{_startMenu}");
         }
         else if (_userInput == 5)
         {
             Console.WriteLine($"{_aaq1}");
-            Thread.Sleep(2000);
-            Console.Clear();
+            Thread.Sleep(500);
             Console.Clear();
             Console.WriteLine($"{_aaq2}");
             Console.WriteLine($"Quit");
-            Console.WriteLine($"Confirm quit? (Click 5 to confirm, click anything else to continue)");
-            _userInput = 5;
+
         }
         else if (_userInput < 0)
         {
             Console.WriteLine($"_errorMessage");
             //Console.WriteLine($"{_startMenu}");
-            
+
         }
     }
 }

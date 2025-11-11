@@ -10,10 +10,10 @@ class Program
         
         Menu newMenu = new Menu();
 
-        newMenu.StartDisplay();
-        //newMenu.GetInput();
-        newMenu.CallJournal(newMenu.GetInput());
-        while (newMenu.GetInput() != 5)
+        // newMenu.StartDisplay();
+        // //newMenu.GetInput();
+        // newMenu.CallJournal(newMenu.GetInput());
+        do
         {
             newMenu.Display();
             // Console.Clear();
@@ -21,6 +21,8 @@ class Program
 
             // newMenu.Display();
         }
+        while (newMenu.ReturnInputNum() != 5);
+        
 
     }
 }
