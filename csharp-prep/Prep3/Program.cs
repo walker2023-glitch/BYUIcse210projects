@@ -43,6 +43,17 @@ public class Program
 
         After the game is over, ask the user if they want to play again. Then, loop back and play the whole game again and continue this loop as long as they keep saying "yes".
         */
+        string textNumber = "forty-two";
+        int result;
+
+        // TryParseNumber<int> is called directly on the string variable
+        bool success = textNumber.TryParseNumber<int>(out result);
+
+        if (success)
+        {
+            Console.WriteLine($"Parsed number: {result}"); // Output: 42
+        }
+
         Console.WriteLine("What is the lowest number in the range you want the random number to be generated in?");
         string Num1S = Console.ReadLine();
         Console.WriteLine("What is the highest number in the range you want the random number to be generated in?");
