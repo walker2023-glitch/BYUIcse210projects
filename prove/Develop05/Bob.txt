@@ -1,0 +1,4 @@
+0
+SimpleGoal:+=+Bob+=+I will say hi to Bob.+=+50+=+0+=+0+=+1+=+False
+SimpleGoal:+=+sleep+=+I will sleep everyday.+=+100+=+0+=+0+=+1+=+False
+SimpleGoal:+=+Your Mom+=+I will call my mom.+=+50+=+0+=+0+=+1+=+False
