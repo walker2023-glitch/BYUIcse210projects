@@ -1,13 +1,13 @@
-class RedDwarf :Star
+class WhiteDwarf :Star
 {
     //private double _density;
 
-     public RedDwarf(string n, double d, double l, double t) : base(n, d, l, t)
+     public WhiteDwarf(string n, double d, double l, double t) : base(n, d, l, t)
     {
         //this._density = de;
     }
 
-    public RedDwarf(double temp, double luminosity, double radius, double absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
+    public WhiteDwarf(double temp, double luminosity, double radius, double absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
     {
         this._tempK = temp;
         this._luminosity = luminosity;
@@ -18,7 +18,7 @@ class RedDwarf :Star
         this._spectralClass = spectralClass;
     }
 
-    public RedDwarf(double l, double t) : base(l, t)
+    public WhiteDwarf(double l, double t) : base(l, t)
     {
         
     }
