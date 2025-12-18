@@ -13,7 +13,7 @@ class HertzsprungRussell
     private List<IClassificationStrategy> _strategies;
     private readonly StarTypePredictor _predictor = new StarTypePredictor();
     private ITransformer _trainedMLModel;
-    const string DataPath = "StarData.txt";
+    private const string TrainingDataPath = "StarData.txt";
 
 
     public HertzsprungRussell()
@@ -22,6 +22,10 @@ class HertzsprungRussell
 
         _strategies = new List<IClassificationStrategy>();
 
+        _strategies.Add(new HyperGiantStrategy());
+        _strategies.Add(new SuperGiantStrategy());
+        _strategies.Add(new BrownDwarfStrategy());
+        _strategies.Add(new WhiteDwarfStrategy());
         _strategies.Add(new RedDwarfStrategy());
         _strategies.Add(new GiantStarStrategy());
         _strategies.Add(new MainSequenceStrategy());
@@ -30,19 +34,40 @@ class HertzsprungRussell
 
     public void PrintCatalogReport()
 {
+    int count = 1;
     foreach (var star in _starCatalog)
     {
-        Console.WriteLine(star.GenerateAstroReport());
+        Console.WriteLine($"{count}. {star.GenerateAstroReport()}");
+        count++;
     }
+
+}
+
+
+
+public void PrintCatalogReportToFile(string fileName)
+{
+
+    using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+        int count = 1;
+        foreach (var star in _starCatalog)
+        {
+            outputFile.WriteLine($"{count}: {star.GenerateAstroReport()}");
+            count++;
+        }
+
+        }
 }
     public void InitializeMLModel()
     {
-        _trainedMLModel = _predictor.LoadAndTrainModel(DataPath);
+        Console.WriteLine($"Training AI logic using {TrainingDataPath}");
+        _trainedMLModel = _predictor.LoadAndTrainModel(TrainingDataPath);
     }
 
-    public List<StarDataRaw> LoadRawData()
+    public List<StarDataRaw> LoadRawData(string fileName)
     {
-        string[] allLines = File.ReadAllLines(DataPath);
+        string[] allLines = File.ReadAllLines(fileName);
         List<StarDataRaw> rawStars = new List<StarDataRaw>();
         foreach (string line in allLines.Skip(1))
         {
@@ -68,12 +93,12 @@ class HertzsprungRussell
         return rawStars;
     }
 
-    public void RunClassification()
+    public void RunClassification(string targetFile)
     {
-        List<StarDataRaw> rawStars = LoadRawData();
+        List<StarDataRaw> rawStars = LoadRawData(targetFile);
         _starCatalog.Clear();
 
-        Console.WriteLine($"Starting classifcation of {rawStars.Count} stars...");
+        Console.WriteLine($"Starting classifcation of {rawStars.Count} stars from {targetFile}");
 
         foreach (var rawStar in rawStars)
         {

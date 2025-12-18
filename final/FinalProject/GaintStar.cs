@@ -17,9 +17,8 @@ class GiantStar :Star
     // }
 
     public override string GenerateAstroReport()
-    {
-        string RealFinal = this._FinalResult;
-        return RealFinal;
-        //return base.GenerateAstroReport();
-    }
+{
+    // This calls the logic in Star.cs which actually builds the string
+    return base.GenerateAstroReport();
+}
 }

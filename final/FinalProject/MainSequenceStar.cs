@@ -15,7 +15,8 @@ class MainSequenceStar :Star
         
     // }
     public override string GenerateAstroReport()
-    {
-        return base.GenerateAstroReport();
-    }
+{
+    // This calls the logic in Star.cs which actually builds the string
+    return base.GenerateAstroReport();
+}
 }

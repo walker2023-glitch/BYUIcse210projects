@@ -14,7 +14,8 @@ class SuperGiant : GiantStar
     }
 
     public override string GenerateAstroReport()
-    {
-        return $"[SUPER GIANT] {base.GenerateAstroReport()}";
-    }
+{
+    // This calls the logic in Star.cs which actually builds the string
+    return base.GenerateAstroReport();
+}
 }

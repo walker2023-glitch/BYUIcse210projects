@@ -49,10 +49,7 @@ public class Star :CelestialObject
 
     public virtual string GenerateAstroReport()
     {
-        //string _FinalResult = $"Star Name: {this._name} Star temperature: {this._tempK}K Star Distance: {this._distanceLY}";
-        string _FinalResult = $"Star Type: {this._starType} Spectral Class: {GetSpectralClass()} Star Color: {this._starColor} Star temperature: {this._tempK}K Star Luminosity: {this._luminosity}L/Lo Star Radius: {this._radius}R/Ro Absolute Magnitude: {this._absMag}";
-        
-        return _FinalResult;
+        return $"Star Type: {this._starType} Spectral Class: {GetSpectralClass()} Star Color: {this._starColor} Star temperature: {this._tempK}K Star Luminosity: {this._luminosity}L/Lo Star Radius: {this._radius}R/Ro Absolute Magnitude: {this._absMag}";
     }
 }
 

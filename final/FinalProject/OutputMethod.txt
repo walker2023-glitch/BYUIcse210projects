@@ -1,0 +1,9 @@
+1: Star Type: Red Dwarf Spectral Class: M Star Color: Red Star temperature: 2500K Star Luminosity: 0.0001L/Lo Star Radius: 0.1R/Ro Absolute Magnitude: 18.5
+2: Star Type: Red Dwarf Spectral Class: K Star Color: Red Star temperature: 4000K Star Luminosity: 0.005L/Lo Star Radius: 0.5R/Ro Absolute Magnitude: 12.2
+3: Star Type: White Dwarf Spectral Class: A Star Color: Blue-White Star temperature: 9500K Star Luminosity: 0.001L/Lo Star Radius: 0.01R/Ro Absolute Magnitude: 13.5
+4: Star Type: Main Sequence Spectral Class: G Star Color: Yellow Star temperature: 5800K Star Luminosity: 1L/Lo Star Radius: 1R/Ro Absolute Magnitude: 4.8
+5: Star Type: Giant Spectral Class: K Star Color: Orange Star temperature: 4500K Star Luminosity: 50L/Lo Star Radius: 20R/Ro Absolute Magnitude: 1.2
+6: Star Type: Giant Spectral Class: M Star Color: Red Star temperature: 3500K Star Luminosity: 20000L/Lo Star Radius: 500R/Ro Absolute Magnitude: -6.5
+7: Star Type: Giant Spectral Class: B Star Color: Blue Star temperature: 15000K Star Luminosity: 100000L/Lo Star Radius: 1000R/Ro Absolute Magnitude: -9.2
+8: Star Type: Main Sequence Spectral Class: F Star Color: White Star temperature: 7200K Star Luminosity: 5.5L/Lo Star Radius: 2.5R/Ro Absolute Magnitude: 3.1
+9: Star Type: Giant Spectral Class: O Star Color: Blue Star temperature: 35000K Star Luminosity: 50000L/Lo Star Radius: 15R/Ro Absolute Magnitude: -5.2
