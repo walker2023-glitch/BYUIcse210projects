@@ -27,17 +27,17 @@ public class Star :CelestialObject
         this._spectralClass = spectralClass;
     }
 
-    public Star(double l, double t)
-    {
-        this._luminosity = l;
-        this._tempK = t;
-    }
+    // public Star(double l, double t)
+    // {
+    //     _luminosity = l;
+    //     this._tempK = t;
+    // }
 
-    public Star(string n, double d, double l, double t) : base(n, d)
-    {
-        this._luminosity = l;
-        this._tempK = t;
-    }
+    // public Star(string n, double d, float l, float t) : base(n, d)
+    // {
+    //     this._luminosity = l;
+    //     this._tempK = t;
+    // }
 
     
     
@@ -50,7 +50,7 @@ public class Star :CelestialObject
     public virtual string GenerateAstroReport()
     {
         //string _FinalResult = $"Star Name: {this._name} Star temperature: {this._tempK}K Star Distance: {this._distanceLY}";
-        string _FinalResult = $"Star Name: {this._name} Star temperature: {this._tempK}K Star Luminosity: {this._luminosity}L/Lo Star Type: {this._starType} Star Color: {this._starColor} Spectral Class: {GetSpectralClass()}";
+        string _FinalResult = $"Star Type: {this._starType} Spectral Class: {GetSpectralClass()} Star Color: {this._starColor} Star temperature: {this._tempK}K Star Luminosity: {this._luminosity}L/Lo Star Radius: {this._radius}R/Ro Absolute Magnitude: {this._absMag}";
         
         return _FinalResult;
     }

@@ -4,12 +4,12 @@ using Microsoft.ML.Data;
 
 public class StarTypePrediction
 {
-    public float Score {get; set;}
+    // ML.NET will put the predicted category index here
     [ColumnName("PredictedLabel")]
-    public int PredictedStarType {get; set;}
+    public uint PredictedStarType { get; set; }
 
-    
-
+    // This array holds the probability for each possible star type
+    public float[] Score { get; set; }
 }
 
 public class StarTypePredictor
@@ -20,44 +20,47 @@ public class StarTypePredictor
     {
         _mlContext = new MLContext();
     }
-    public ITransformer LoadAndTrainModel(string trainingDataPath)
+    // FinalProject/StarTypePrediction.cs
+
+public ITransformer LoadAndTrainModel(string trainingDataPath)
+{
+    IDataView trainingDataView = _mlContext.Data.LoadFromTextFile<StarDataRaw>(
+        path: trainingDataPath,
+        separatorChar: ',',
+        hasHeader: true
+    );
+    
+    string[] featureColumns = new[]
     {
-        IDataView trainingDataView = _mlContext.Data.LoadFromTextFile<StarDataRaw>(
-            path: trainingDataPath,
-            separatorChar: ',',
-            hasHeader: true
-        );
-        
-        string[] featureColumns = new[]
-        {
-            nameof(StarDataRaw._TempK),
-            nameof(StarDataRaw._Lum),
-            nameof(StarDataRaw._AbsoluteMag),
-            nameof(StarDataRaw._Radius)
-        };
-        
-        IEstimator<ITransformer> dataProcessingPipeline = _mlContext.Transforms.Concatenate("Features", featureColumns);
+        nameof(StarDataRaw._TempK),
+        nameof(StarDataRaw._Lum),
+        nameof(StarDataRaw._AbsoluteMag),
+        nameof(StarDataRaw._Radius)
+    };
+    
+    // 1. Concatenate features (Ensure these are floats in StarDataRaw)
+    var dataProcessingPipeline = _mlContext.Transforms.Concatenate("Features", featureColumns)
+        // 2. Map the 'Label' column (Int32) to a Key type
+        .Append(_mlContext.Transforms.Conversion.MapValueToKey("Label"));
 
-        var trainingPipeLinen= dataProcessingPipeline.Append(
-            _mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy(
-                labelColumnName: "Label",
-                featureColumnName: "Features"
-            )
-        );
-        ITransformer trainedModel = trainingPipeLinen.Fit(trainingDataView);
-        _mlContext.Model.Save(
-            trainedModel,
-            trainingDataView.Schema,
-            "star_classifier_model.zip"
-        );
-        
-        
-        return trainedModel;
+    // 3. Append the trainer
+    var trainingPipeLine = dataProcessingPipeline.Append(
+        _mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy(
+            labelColumnName: "Label",
+            featureColumnName: "Features"
+        )
+    );
 
-
-
-        //throw new NotImplementedException();
-    }
+    ITransformer trainedModel = trainingPipeLine.Fit(trainingDataView);
+    
+    _mlContext.Model.Save(
+        trainedModel,
+        trainingDataView.Schema,
+        "star_classifier_model.zip"
+    );
+    
+    return trainedModel;
+}
     public StarTypePrediction Predict(ITransformer trainedModel, StarDataRaw data)
     {
         PredictionEngine<StarDataRaw, StarTypePrediction> predictionEngine = _mlContext.Model.CreatePredictionEngine<StarDataRaw, StarTypePrediction>(trainedModel);

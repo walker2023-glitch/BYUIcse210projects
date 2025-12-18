@@ -88,10 +88,13 @@ class HertzsprungRussell
                 }
             }
 
+            // FinalProject/HertzsprungRussell.cs
+
             if(classifiedStar == null)
             {
                 StarTypePrediction prediction = _predictor.Predict(_trainedMLModel, rawStar);
-                int predictedType = (int)prediction.PredictedStarType;
+                // Cast the uint key back to int
+                int predictedType = (int)prediction.PredictedStarType - 1; 
 
                 classifiedStar = CreateStarObjectFromPrediction(predictedType, rawStar);
             }

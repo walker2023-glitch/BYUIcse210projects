@@ -2,20 +2,20 @@ class RedDwarf :Star
 {
     //private double _density;
 
-     public RedDwarf(string n, double d, double l, double t) : base(n, d, l, t)
-    {
-        //this._density = de;
-    }
+    //  public RedDwarf(string n, double d, double l, double t) : base(n, d, l, t)
+    // {
+    //     //this._density = de;
+    // }
 
-    public RedDwarf(double temp, double luminosity, double radius, double absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
+    public RedDwarf(float temp, float luminosity, float radius, float absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
     {
         
     }
 
-    public RedDwarf(double l, double t) : base(l, t)
-    {
+    // public RedDwarf(double l, double t) : base(l, t)
+    // {
         
-    }
+    // }
 
     public override string GenerateAstroReport()
     {

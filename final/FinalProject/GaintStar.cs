@@ -1,6 +1,6 @@
 class GiantStar :Star
 {
-    private double _RadiusSolar;
+    //private double _RadiusSolar;
 
 
     public GiantStar(float temp, float luminosity, float radius, float absMag, string starType, string starColor, string spectralClass) :base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
