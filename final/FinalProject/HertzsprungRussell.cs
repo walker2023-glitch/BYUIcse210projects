@@ -23,11 +23,18 @@ class HertzsprungRussell
         _strategies = new List<IClassificationStrategy>();
 
         _strategies.Add(new RedDwarfStrategy());
-        _strategies.Add(new GaintStarStrategy());
+        _strategies.Add(new GiantStarStrategy());
         _strategies.Add(new MainSequenceStrategy());
 
     }
 
+    public void PrintCatalogReport()
+{
+    foreach (var star in _starCatalog)
+    {
+        Console.WriteLine(star.GenerateAstroReport());
+    }
+}
     public void InitializeMLModel()
     {
         _trainedMLModel = _predictor.LoadAndTrainModel(DataPath);
@@ -43,10 +50,10 @@ class HertzsprungRussell
             
             rawStars.Add(new StarDataRaw
             {
-                _TempK = double.Parse(oneStar[0]),
-                _Lum = double.Parse(oneStar[1]),
-                _Radius = double.Parse(oneStar[2]),
-                _AbsoluteMag = double.Parse(oneStar[3]),
+                _TempK = float.Parse(oneStar[0]),
+                _Lum = float.Parse(oneStar[1]),
+                _Radius = float.Parse(oneStar[2]),
+                _AbsoluteMag = float.Parse(oneStar[3]),
                 //Label = int.Parse(oneStar[4]),
                  Label = int.Parse(oneStar[4]),
                 _Color = (oneStar[5]),
@@ -91,21 +98,24 @@ class HertzsprungRussell
 
             _starCatalog.Add(classifiedStar);
         }
-        Console.WriteLine("Classification complete. Catalog populated.")
+        Console.WriteLine("Classification complete. Catalog populated.");
     }
 
-    private Star CreateStarObjectFromPrediction(int type, StarDataRaw rawData)
+
+        // Updated HertzsprungRussell.cs
+private Star CreateStarObjectFromPrediction(int type, StarDataRaw rawData)
+{
+    return type switch
     {
-        switch (type)
-        {
-            case 0:
-                return new
-
-
-            default:
-                Console.WriteLine($"Warning: Unexpected ML prediction type: {type}. Defaulting to Main Sequence.");
-                return new MainSequenceStar(rawData);
-        }
-    }
+        0 => new BrownDwarf(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "Brown Dwarf", rawData._Color, rawData._SpectralClass),
+        1 => new RedDwarf(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "Red Dwarf", rawData._Color, rawData._SpectralClass),
+        2 => new WhiteDwarf(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "White Dwarf", rawData._Color, rawData._SpectralClass),
+        3 => new MainSequenceStar(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "Main Sequence", rawData._Color, rawData._SpectralClass),
+        4 => new GiantStar(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "Giant", rawData._Color, rawData._SpectralClass),
+        5 => new HyperGiant(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "Hypergiant", rawData._Color, rawData._SpectralClass),
+        // Fallback case
+        _ => new MainSequenceStar(rawData._TempK, rawData._Lum, rawData._Radius, rawData._AbsoluteMag, "Main Sequence", rawData._Color, rawData._SpectralClass)
+    };
+}
 
 }

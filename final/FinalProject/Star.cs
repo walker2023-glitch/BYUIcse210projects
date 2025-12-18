@@ -2,10 +2,10 @@ using System.Runtime.ConstrainedExecution;
 
 public class Star :CelestialObject
 {
-    protected double _luminosity;
-    protected double _tempK;
-    protected double _radius;
-    protected double _absMag;
+    protected float _luminosity;
+    protected float _tempK;
+    protected float _radius;
+    protected float _absMag;
     protected string _starType;
     protected string _starColor;
     protected string _spectralClass;
@@ -16,7 +16,7 @@ public class Star :CelestialObject
 
     //Temperature (K),Luminosity(L/Lo),Radius(R/Ro),Absolute magnitude(Mv),Star type,Star color,Spectral Class
 
-    public Star(double temp, double luminosity, double radius, double absMag, string starType, string starColor, string spectralClass)
+    public Star(float temp, float luminosity, float radius, float absMag, string starType, string starColor, string spectralClass)
     {
         this._tempK = temp;
         this._luminosity = luminosity;

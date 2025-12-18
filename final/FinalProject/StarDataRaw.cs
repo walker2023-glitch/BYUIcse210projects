@@ -5,18 +5,17 @@ public class StarDataRaw
 {
     //For encapsulation, normally these are private. However, for the ML feature this needs to be overruled and turned public
     [LoadColumn(0)]
-    public double _TempK{get; set;}
+    public float _TempK{get; set;}
     [LoadColumn(1)]
-    public double _Lum{get; set;}
+    public float _Lum{get; set;}
     [LoadColumn(2)]
-    public double _Radius{get; set;}
+    public float _Radius{get; set;}
     [LoadColumn(3)]
-    public double _AbsoluteMag{get; set;}
+    public float _AbsoluteMag{get; set;}
     [LoadColumn(4)]
     [ColumnName("Label")]
     public int Label{get; set;}
     [LoadColumn(5)]
-    
     public string _SpectralClass{get; set;}
     [LoadColumn(6)]
     public string _Color{get; set;}
@@ -35,7 +34,7 @@ public class StarDataRaw
 
     public StarDataRaw(){}
     
-    public StarDataRaw(double temp, double lum, double rad, double absmag, int target, string c, string spectral)
+    public StarDataRaw(float temp, float lum, float rad, float absmag, int target, string c, string spectral)
     {
         _TempK = temp;
         _Lum = lum;

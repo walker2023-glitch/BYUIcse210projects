@@ -2,26 +2,20 @@ class WhiteDwarf :Star
 {
     //private double _density;
 
-     public WhiteDwarf(string n, double d, double l, double t) : base(n, d, l, t)
-    {
-        //this._density = de;
-    }
+    //  public WhiteDwarf(string n, double d, double l, double t) : base(n, d, l, t)
+    // {
+    //     //this._density = de;
+    // }
 
-    public WhiteDwarf(double temp, double luminosity, double radius, double absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
-    {
-        this._tempK = temp;
-        this._luminosity = luminosity;
-        this._radius = radius;
-        this._absMag = absMag;
-        this._starType = starType;
-        this._starColor = starColor;
-        this._spectralClass = spectralClass;
-    }
-
-    public WhiteDwarf(double l, double t) : base(l, t)
+    public WhiteDwarf(float temp, float luminosity, float radius, float absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
     {
         
     }
+
+    // public WhiteDwarf(double l, double t) : base(l, t)
+    // {
+        
+    // }
 
     public override string GenerateAstroReport()
     {

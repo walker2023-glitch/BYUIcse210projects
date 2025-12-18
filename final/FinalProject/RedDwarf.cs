@@ -9,13 +9,7 @@ class RedDwarf :Star
 
     public RedDwarf(double temp, double luminosity, double radius, double absMag, string starType, string starColor, string spectralClass) : base(temp, luminosity, radius, absMag, starType, starColor, spectralClass)
     {
-        this._tempK = temp;
-        this._luminosity = luminosity;
-        this._radius = radius;
-        this._absMag = absMag;
-        this._starType = starType;
-        this._starColor = starColor;
-        this._spectralClass = spectralClass;
+        
     }
 
     public RedDwarf(double l, double t) : base(l, t)
